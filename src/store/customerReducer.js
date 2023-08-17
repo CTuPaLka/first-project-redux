@@ -2,12 +2,12 @@ const defaultState = {
   customers: [],
 };
 
-const customerReducer = (state = defaultState, action) => {
+export const customerReducer = (state = defaultState, action) => {
   switch (action.type) {
     case "ADD_CUSTOMER":
-      return { ...state, cash: state.cash + action.payload };
+      return { ...state, customers: [...state.customers, action.customers ] };
     case "GET_CUSTOMER":
-      return { ...state, cash: state.cash - action.payload };
+      return { ...state, customers: [state.customers.filter(customer=>customer.id !== action.customer.id)] };
 
     default:
       return state;
